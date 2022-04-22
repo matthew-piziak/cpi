@@ -3,15 +3,16 @@
 """
 Download the latest annual Consumer Price Index (CPI) dataset.
 """
-# Files
-import os
 import csv
-import sqlite3
-import requests
-import pandas as pd
-
 # Logging
 import logging
+# Files
+import os
+import sqlite3
+
+import pandas as pd
+import requests
+
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
 
@@ -19,32 +20,32 @@ logger.addHandler(logging.NullHandler())
 class Downloader(object):
     THIS_DIR = os.path.dirname(__file__)
     FILE_LIST = [
-        "cu.area",
-        "cu.item",
-        "cu.period",
-        "cu.periodicity",
-        "cu.series",
-        "cu.data.0.Current",
+        # "cu.area",
+        # "cu.item",
+        # "cu.period",
+        # "cu.periodicity",
+        # "cu.series",
+        # "cu.data.0.Current",
         "cu.data.1.AllItems",
-        "cu.data.2.Summaries",
-        "cu.data.3.AsizeNorthEast",
-        "cu.data.4.AsizeNorthCentral",
-        "cu.data.5.AsizeSouth",
-        "cu.data.6.AsizeWest",
-        "cu.data.7.OtherNorthEast",
-        "cu.data.8.OtherNorthCentral",
-        "cu.data.9.OtherSouth",
-        "cu.data.10.OtherWest",
-        "cu.data.11.USFoodBeverage",
-        "cu.data.12.USHousing",
-        "cu.data.13.USApparel",
-        "cu.data.14.USTransportation",
-        "cu.data.15.USMedical",
-        "cu.data.16.USRecreation",
-        "cu.data.17.USEducationAndCommunication",
-        "cu.data.18.USOtherGoodsAndServices",
-        "cu.data.19.PopulationSize",
-        "cu.data.20.USCommoditiesServicesSpecial"
+        # "cu.data.2.Summaries",
+        # "cu.data.3.AsizeNorthEast",
+        # "cu.data.4.AsizeNorthCentral",
+        # "cu.data.5.AsizeSouth",
+        # "cu.data.6.AsizeWest",
+        # "cu.data.7.OtherNorthEast",
+        # "cu.data.8.OtherNorthCentral",
+        # "cu.data.9.OtherSouth",
+        # "cu.data.10.OtherWest",
+        # "cu.data.11.USFoodBeverage",
+        # "cu.data.12.USHousing",
+        # "cu.data.13.USApparel",
+        # "cu.data.14.USTransportation",
+        # "cu.data.15.USMedical",
+        # "cu.data.16.USRecreation",
+        # "cu.data.17.USEducationAndCommunication",
+        # "cu.data.18.USOtherGoodsAndServices",
+        # "cu.data.19.PopulationSize",
+        # "cu.data.20.USCommoditiesServicesSpecial"
     ]
 
     def update(self):
@@ -81,8 +82,8 @@ class Downloader(object):
         Download TSV file from the BLS.
         """
         # Download it
-        url = "https://download.bls.gov/pub/time.series/cu/{}".format(file)
-        logger.debug(" - {}".format(url))
+        # url = "https://download.bls.gov/pub/time.series/cu/{}".format(file)
+        # logger.debug(" - {}".format(url))
         tsv_path = os.path.join(self.THIS_DIR, '{}.tsv'.format(file))
         response = requests.get(url)
         with open(tsv_path, 'w') as f:
